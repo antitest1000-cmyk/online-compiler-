@@ -408,65 +408,65 @@
         Settings
       </div>
       <div class="modal-body">
-        <div class="form-group">
-          <label class="form-label" for="settings-apikey">API / License Key</label>
-          <div class="input-with-btn">
-            <input
-              type="password"
-              class="form-input"
-              id="settings-apikey"
-              placeholder="Enter your key..."
-              autocomplete="off"
-            />
-            <button class="btn btn-ghost btn-xs" id="btn-toggle-apikey" title="Show/Hide key">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                <circle cx="12" cy="12" r="3"/>
-              </svg>
-            </button>
-          </div>
-          <div class="api-key-actions">
-            <button class="btn btn-run btn-sm" id="btn-save-apikey">Save API Key</button>
-            <button class="btn btn-stop btn-sm" id="btn-clear-apikey">Clear API Key</button>
-          </div>
-          <span class="form-hint" id="apikey-status"></span>
-        </div>
 
+        <!-- Font Family -->
         <div class="form-group">
-          <label class="form-label" for="settings-model">Compiler Engine Version</label>
-          <select class="form-input form-select" id="settings-model">
-            <option value="openai/gpt-oss-120b" selected>v4.20.1 (Default)</option>
-            <option value="openai/gpt-oss-20b">v4.19.0 (Fast)</option>
-            <option value="qwen/qwen3.8-27b">v3.8.2 (Legacy)</option>
-            <option value="mixtral-8x7b-32768">v3.5.0</option>
-            <option value="gemma2-9b-it">v2.9.0</option>
+          <label class="form-label" for="settings-font-family">Editor Font</label>
+          <select class="form-input form-select" id="settings-font-family">
+            <option value="'JetBrains Mono', 'Consolas', monospace">JetBrains Mono (Default)</option>
+            <option value="'Fira Code', 'Consolas', monospace">Fira Code</option>
+            <option value="'Source Code Pro', monospace">Source Code Pro</option>
+            <option value="'Courier New', Courier, monospace">Courier New</option>
+            <option value="'Consolas', monospace">Consolas</option>
+            <option value="'Monaco', monospace">Monaco</option>
+            <option value="'Lucida Console', monospace">Lucida Console</option>
           </select>
-          <span class="form-hint">Newer versions provide more accurate compilation behavior.</span>
+          <span class="form-hint">Changes the font used inside the code editor.</span>
         </div>
 
+        <!-- Font Size -->
         <div class="form-group">
-          <label class="form-label">Theme</label>
-          <div class="theme-options">
-            <label class="theme-card" id="theme-dark-card">
-              <input type="radio" name="theme" value="dark" id="theme-dark" checked />
-              <div class="theme-preview dark-preview">
-                <div class="tp-toolbar"></div>
-                <div class="tp-editor"></div>
-                <div class="tp-terminal"></div>
-              </div>
-              <span>Dark</span>
-            </label>
-            <label class="theme-card" id="theme-light-card">
-              <input type="radio" name="theme" value="light" id="theme-light" />
-              <div class="theme-preview light-preview">
-                <div class="tp-toolbar"></div>
-                <div class="tp-editor"></div>
-                <div class="tp-terminal"></div>
-              </div>
-              <span>Light</span>
-            </label>
+          <label class="form-label" for="settings-font-size">
+            Font Size — <span id="settings-font-size-label">13px</span>
+          </label>
+          <input type="range" id="settings-font-size" min="10" max="24" step="1" value="13"
+            style="width:100%; accent-color:#337ab7;" />
+          <div style="display:flex; justify-content:space-between; font-size:11px; color:#999; margin-top:3px;">
+            <span>10px (Tiny)</span><span>17px (Large)</span><span>24px (Huge)</span>
           </div>
         </div>
+
+        <!-- Tab Size -->
+        <div class="form-group">
+          <label class="form-label" for="settings-tab-size">Tab / Indent Size</label>
+          <select class="form-input form-select" id="settings-tab-size">
+            <option value="2">2 spaces</option>
+            <option value="4" selected>4 spaces (Default)</option>
+            <option value="8">8 spaces</option>
+          </select>
+          <span class="form-hint">Width of a tab character in the editor.</span>
+        </div>
+
+        <!-- Line Height -->
+        <div class="form-group">
+          <label class="form-label" for="settings-line-height">Line Spacing</label>
+          <select class="form-input form-select" id="settings-line-height">
+            <option value="1.4">Compact (1.4×)</option>
+            <option value="1.6" selected>Normal (1.6×) — Default</option>
+            <option value="1.9">Relaxed (1.9×)</option>
+            <option value="2.2">Spacious (2.2×)</option>
+          </select>
+        </div>
+
+        <!-- Word Wrap -->
+        <div class="form-group" style="display:flex; align-items:center; gap:12px;">
+          <label class="form-label" style="margin:0;" for="settings-word-wrap">Word Wrap</label>
+          <label style="display:flex; align-items:center; gap:6px; cursor:pointer; font-size:13px; color:#555;">
+            <input type="checkbox" id="settings-word-wrap" style="accent-color:#337ab7; width:15px; height:15px;" />
+            Enable word wrap (long lines fold instead of scroll)
+          </label>
+        </div>
+
       </div>
       <div class="modal-footer">
         <button class="btn btn-ghost" id="modal-settings-close">Close</button>

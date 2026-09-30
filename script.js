@@ -121,7 +121,6 @@ Do not wrap in markdown. Do not add \`\`\`. Be thorough but concise.`;
 const STATE = {
   apiKey:       '',
   model:        CONFIG.DEFAULT_MODEL,
-  theme:        CONFIG.DEFAULT_THEME,
   lang:         'c',
   isRunning:    false,
   isDebugging:  false,
@@ -130,6 +129,10 @@ const STATE = {
   currentCol:   1,
   activeTab:    'input',
   fontSize:     13,
+  editorFont:   "'JetBrains Mono', 'Consolas', monospace",
+  tabSize:      4,
+  lineHeightMult: 1.6,
+  wordWrap:     false,
 };
 
 /* ════════════════════════════════════════════════════════════════
@@ -154,9 +157,8 @@ function cacheDOM() {
     'btn-clear-terminal', 'btn-copy-terminal', 'btn-download-output',
     'modal-new', 'modal-new-cancel', 'modal-new-confirm',
     'modal-settings', 'modal-settings-close', 'modal-settings-save',
-    'settings-apikey', 'settings-model',
-    'btn-save-apikey', 'btn-clear-apikey', 'btn-toggle-apikey',
-    'apikey-status', 'theme-dark', 'theme-light',
+    'settings-font-family', 'settings-font-size', 'settings-font-size-label',
+    'settings-tab-size', 'settings-line-height', 'settings-word-wrap',
     'toast-container', 'workspace', 'resize-handle-v', 'sidebar-left',
   ];
   ids.forEach(id => {
@@ -877,62 +879,98 @@ function escapeHtml(str) {
 }
 
 /* ════════════════════════════════════════════════════════════════
-   § SETTINGS MODAL
+   § EDITOR PREFERENCES
 ════════════════════════════════════════════════════════════════ */
+function applyEditorPrefs() {
+  const fs  = STATE.fontSize;
+  const lh  = `${Math.round(fs * STATE.lineHeightMult)}px`;
+  const px  = `${fs}px`;
+  const fontFamily = STATE.editorFont;
+  const ww  = STATE.wordWrap;
+
+  // CSS variables
+  document.documentElement.style.setProperty('--font-size', px);
+  document.documentElement.style.setProperty('--line-h', lh);
+
+  // Apply font family to all editor elements
+  const editorEls = [DOM['code-textarea'], DOM['highlight-layer'], DOM['line-numbers']];
+  editorEls.forEach(el => {
+    if (!el) return;
+    el.style.fontFamily  = fontFamily;
+    el.style.tabSize     = STATE.tabSize;
+  });
+
+  // Word wrap
+  const ta = DOM['code-textarea'];
+  const hl = DOM['highlight-layer'];
+  if (ta) {
+    ta.style.whiteSpace    = ww ? 'pre-wrap' : 'pre';
+    ta.style.overflowWrap  = ww ? 'break-word' : 'normal';
+    ta.style.wordBreak     = ww ? 'break-all' : 'normal';
+  }
+  if (hl) {
+    hl.style.whiteSpace    = ww ? 'pre-wrap' : 'pre';
+    hl.style.overflowWrap  = ww ? 'break-word' : 'normal';
+  }
+
+  // Update zoom label if present
+  const lvl = document.getElementById('zoom-level');
+  if (lvl) lvl.textContent = `${Math.round((fs / 13) * 100)}%`;
+
+  // Update range label
+  const lbl = DOM['settings-font-size-label'];
+  if (lbl) lbl.textContent = px;
+
+  Editor.update();
+}
+
+function loadSavedPrefs() {
+  STATE.fontSize        = parseInt(localStorage.getItem('kidan_font_size')  || '13');
+  STATE.editorFont      = localStorage.getItem('kidan_font_family')         || "'JetBrains Mono', 'Consolas', monospace";
+  STATE.tabSize         = parseInt(localStorage.getItem('kidan_tab_size')   || '4');
+  STATE.lineHeightMult  = parseFloat(localStorage.getItem('kidan_line_height') || '1.6');
+  STATE.wordWrap        = localStorage.getItem('kidan_word_wrap') === 'true';
+}
+
 const Settings = {
   open() {
-    DOM['settings-apikey'].value = STATE.apiKey ? '•'.repeat(20) : '';
-    DOM['settings-apikey'].type  = 'password';
-    DOM['settings-model'].value  = STATE.model;
-    DOM['theme-dark'].checked    = STATE.theme === 'dark';
-    DOM['theme-light'].checked   = STATE.theme === 'light';
-    DOM['apikey-status'].textContent = STATE.apiKey ? '✓ API key is saved' : 'No API key saved.';
-    DOM['apikey-status'].className = STATE.apiKey ? 'form-hint saved' : 'form-hint';
+    // Sync controls with current state
+    if (DOM['settings-font-family']) DOM['settings-font-family'].value = STATE.editorFont;
+    if (DOM['settings-font-size'])   {
+      DOM['settings-font-size'].value = STATE.fontSize;
+      DOM['settings-font-size-label'].textContent = `${STATE.fontSize}px`;
+    }
+    if (DOM['settings-tab-size'])    DOM['settings-tab-size'].value = STATE.tabSize;
+    if (DOM['settings-line-height']) DOM['settings-line-height'].value = STATE.lineHeightMult;
+    if (DOM['settings-word-wrap'])   DOM['settings-word-wrap'].checked = STATE.wordWrap;
 
-    DOM['settings-apikey'].addEventListener('focus', () => {
-      if (DOM['settings-apikey'].value.startsWith('•')) DOM['settings-apikey'].value = '';
-    }, { once: true });
+    // Live preview of font size slider
+    DOM['settings-font-size']?.addEventListener('input', () => {
+      const v = parseInt(DOM['settings-font-size'].value);
+      DOM['settings-font-size-label'].textContent = `${v}px`;
+    });
+
     DOM['modal-settings'].classList.remove('hidden');
   },
   close() { DOM['modal-settings'].classList.add('hidden'); },
   save() {
-    const modelVal = DOM['settings-model'].value;
-    const themeVal = DOM['theme-dark'].checked ? 'dark' : 'light';
-    STATE.model = modelVal;
-    Storage.set(CONFIG.STORAGE_KEYS.MODEL, modelVal);
-    applyTheme(themeVal);
+    STATE.editorFont     = DOM['settings-font-family'].value;
+    STATE.fontSize       = parseInt(DOM['settings-font-size'].value);
+    STATE.tabSize        = parseInt(DOM['settings-tab-size'].value);
+    STATE.lineHeightMult = parseFloat(DOM['settings-line-height'].value);
+    STATE.wordWrap       = DOM['settings-word-wrap'].checked;
+
+    localStorage.setItem('kidan_font_family',  STATE.editorFont);
+    localStorage.setItem('kidan_font_size',    STATE.fontSize);
+    localStorage.setItem('kidan_tab_size',     STATE.tabSize);
+    localStorage.setItem('kidan_line_height',  STATE.lineHeightMult);
+    localStorage.setItem('kidan_word_wrap',    STATE.wordWrap);
+
+    applyEditorPrefs();
     Settings.close();
-    showToast('Settings saved.', 'success');
-  },
-  saveApiKey() {
-    const key = DOM['settings-apikey'].value.trim();
-    if (!key || key.startsWith('•')) { showToast('Please enter a valid API key.', 'warn'); return; }
-    STATE.apiKey = key;
-    Storage.set(CONFIG.STORAGE_KEYS.API_KEY, key);
-    DOM['apikey-status'].textContent = '✓ API key saved!';
-    DOM['apikey-status'].className   = 'form-hint saved';
-    DOM['settings-apikey'].value     = '•'.repeat(20);
-    DOM['settings-apikey'].type      = 'password';
-    showToast('API key saved securely.', 'success');
-  },
-  clearApiKey() {
-    STATE.apiKey = '';
-    Storage.remove(CONFIG.STORAGE_KEYS.API_KEY);
-    DOM['settings-apikey'].value     = '';
-    DOM['apikey-status'].textContent = 'API key cleared.';
-    DOM['apikey-status'].className   = 'form-hint cleared';
-    showToast('API key cleared.', 'info');
+    showToast('Editor preferences saved!', 'success');
   },
 };
-
-function applyTheme(theme) {
-  STATE.theme = theme;
-  Storage.set(CONFIG.STORAGE_KEYS.THEME, theme);
-  document.body.className = `theme-${theme}`;
-  const isDark = theme === 'dark';
-  DOM['theme-icon-dark'].style.display  = isDark ? 'block' : 'none';
-  DOM['theme-icon-light'].style.display = isDark ? 'none'  : 'block';
-}
 
 /* ════════════════════════════════════════════════════════════════
    § SAVE & DOWNLOAD
@@ -1184,7 +1222,7 @@ function attachEventListeners() {
     }
   });
   DOM['btn-theme'].addEventListener('click', () => {
-    applyTheme(STATE.theme === 'dark' ? 'light' : 'dark');
+    // Theme toggle not supported — kept for toolbar button compatibility
   });
   DOM['btn-settings'].addEventListener('click', Settings.open.bind(Settings));
   
@@ -1201,12 +1239,6 @@ function attachEventListeners() {
 
   DOM['modal-settings-close'].addEventListener('click', Settings.close.bind(Settings));
   DOM['modal-settings-save'].addEventListener('click', Settings.save.bind(Settings));
-  DOM['btn-save-apikey'].addEventListener('click', Settings.saveApiKey.bind(Settings));
-  DOM['btn-clear-apikey'].addEventListener('click', Settings.clearApiKey.bind(Settings));
-  DOM['btn-toggle-apikey'].addEventListener('click', () => {
-    const input = DOM['settings-apikey'];
-    input.type = input.type === 'password' ? 'text' : 'password';
-  });
   DOM['modal-settings'].addEventListener('click', e => {
     if (e.target === DOM['modal-settings']) Settings.close();
   });
@@ -1262,9 +1294,9 @@ function attachEventListeners() {
 ════════════════════════════════════════════════════════════════ */
 async function init() {
   cacheDOM();
+  loadSavedPrefs();
   const { code, stdin } = Storage.loadAll();
   await loadEnvFile();
-  applyTheme(STATE.theme);
   
   DOM['lang-select'].value = STATE.lang;
   if (DOM['file-tab-name']) DOM['file-tab-name'].nodeValue = ` main${LANGUAGES[STATE.lang].ext}`;
@@ -1276,12 +1308,11 @@ async function init() {
 
   DOM['stdin-area'].value = '';
   Storage.remove(CONFIG.STORAGE_KEYS.STDIN);
-  DOM['settings-model'].value = STATE.model;
 
   attachEventListeners();
   initResizeHandle();
   initResizeHandleV();
-  applyZoom(STATE.fontSize);
+  applyEditorPrefs();
   switchTab('terminal');
   DOM['code-textarea'].focus();
 
