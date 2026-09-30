@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fix: fatal error: conio.h: No such file or directory | Kidan</title>
+  <meta name="description" content="Learn why the conio.h header file throws a fatal error in modern compilers like GCC, and how to fix your C programs that rely on clrscr() and getch()."/>
+  <link rel="canonical" href="https://antitest1000-cmyk.github.io/online-compiler-/blog/conio-h-not-found-fix.html"/>
+  <meta property="og:title" content="Fix: fatal error: conio.h: No such file or directory"/>
+  <meta property="og:description" content="Learn how to fix your C programs that rely on clrscr() and getch()."/>
+  <meta property="og:type" content="article"/>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../blog.css"/>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Fix: fatal error: conio.h: No such file or directory",
+    "description": "Learn why the conio.h header file throws a fatal error in modern compilers like GCC, and how to fix your C programs that rely on clrscr() and getch().",
+    "author": { "@type": "Organization", "name": "Kidan Compiler" }
+  }
+  </script>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../index.html">Kidan <span>Compiler</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Editor</a></li>
+      <li><a href="index.html" class="active">Blog</a></li>
+      <li><a href="../online-c-compiler.html">C</a></li>
+      <li><a href="../online-cpp-compiler.html">C++</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>Fix: fatal error: conio.h: No such file or directory</h1>
+  <p>Why modern compilers reject your college C assignments and how to easily fix the code.</p>
+</div>
+
+<div class="page-wrap">
+  <main class="main-content">
+    <article class="post-body">
+      <h2>Why does this error happen?</h2>
+      <p>
+        If you are copying C code from an old textbook or a college manual, you might see this error when running it in an online compiler or a modern desktop compiler (like GCC or Clang):
+      </p>
+      <pre><code>fatal error: conio.h: No such file or directory</code></pre>
+      <p>
+        The <code>&lt;conio.h&gt;</code> header (Console Input/Output) is a DOS-specific header file created by MS-DOS compilers like Turbo C. It is <strong>not part of the standard C library</strong>. Therefore, modern cross-platform compilers do not include it.
+      </p>
+
+      <h2>How to fix the error</h2>
+      <p>
+        The fix is extremely simple: you just need to remove the DOS-specific functions and the header inclusion from your code. Here are the three steps:
+      </p>
+
+      <h3>1. Remove the include statement</h3>
+      <p>Delete or comment out the line at the top of your file:</p>
+      <pre><code>// #include &lt;conio.h&gt;</code></pre>
+
+      <h3>2. Remove clrscr()</h3>
+      <p>
+        <code>clrscr()</code> was used to clear the DOS screen before printing new output. Modern IDEs and online compilers handle the screen automatically. Just remove the <code>clrscr();</code> line from your code.
+      </p>
+
+      <h3>3. Remove or replace getch()</h3>
+      <p>
+        In Turbo C, <code>getch()</code> was often placed at the very end of <code>main()</code> to pause the screen so you could read the output before the window closed. Modern IDEs and terminal windows stay open after execution finishes, making <code>getch()</code> completely unnecessary for this purpose. Just delete it!
+      </p>
+      <p>
+        If you genuinely need to read a single character of input for your program logic, you can use the standard C function <code>getchar()</code> from <code>&lt;stdio.h&gt;</code> instead.
+      </p>
+
+      <div style="margin: 30px 0; padding: 20px; background: var(--bg-card); border-radius: 8px; border-left: 4px solid var(--accent-success);">
+        <h3 style="margin-top: 0;">Test your fixed code:</h3>
+        <p>Now that you've removed the old Turbo C functions, your code is 100% standard C! You can run it right here in your browser.</p>
+        <a href="../index.html" class="btn-hero" style="display:inline-block; margin-top: 10px;" onclick="localStorage.setItem('kidan_lang', 'c');">▶ Open C Compiler</a>
+      </div>
+
+    </article>
+  </main>
+
+  <aside class="blog-sidebar">
+    <div class="widget">
+      <div class="widget-title">Related Articles</div>
+      <div class="widget-body">
+        <ul>
+          <li><a href="turbo-c-online.html">Turbo C Online Editor</a></li>
+          <li><a href="turbo-c-alternative.html">Best Turbo C Alternatives</a></li>
+          <li><a href="segmentation-fault-fix.html">Fix: Segmentation Fault in C</a></li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>Kidan Compiler</h4>
+      <ul>
+        <li><a href="../index.html">Editor</a></li>
+        <li><a href="index.html">Blog</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 Kidan Compiler. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
