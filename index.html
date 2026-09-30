@@ -3,8 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kidan Compiler — AI-Powered C IDE</title>
-  <meta name="description" content="Kidan Compiler is an AI-powered online C IDE using Groq to simulate compilation and execution." />
+  <title>Kidan Compiler — Free Online C IDE & Multi-Language Compiler</title>
+  <meta name="description" content="Kidan Compiler is a powerful, free online IDE supporting C, Python, Java, C++, JavaScript, and 25+ more languages. Write, run, and debug code instantly in your browser." />
+  <meta name="keywords" content="online compiler, online C compiler, online python compiler, IDE, web IDE, run code online" />
+  
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Kidan Compiler — Free Online Code Editor" />
+  <meta property="og:description" content="Write and run code in 30+ languages online. No installation required." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://antitest1000-cmyk.github.io/online-compiler-/" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://antitest1000-cmyk.github.io/online-compiler-/" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -182,6 +193,12 @@
           <span>C</span>
           <span class="status-dot"></span>
           <span>UTF-8</span>
+          <span class="status-dot"></span>
+          <div class="zoom-controls">
+            <button class="zoom-btn" id="btn-zoom-out" title="Zoom Out (Ctrl+-)">&minus;</button>
+            <span class="zoom-level" id="zoom-level">100%</span>
+            <button class="zoom-btn" id="btn-zoom-in" title="Zoom In (Ctrl+=)">&#43;</button>
+          </div>
         </div>
       </div>
 
@@ -435,6 +452,27 @@
        TOAST NOTIFICATION
   ═══════════════════════════════════════════════════════ -->
   <div class="toast-container" id="toast-container"></div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SEO FOOTER
+  ═══════════════════════════════════════════════════════ -->
+  <footer class="seo-footer" style="padding: 20px 15px; background: #fff; color: #555; text-align: left; font-family: var(--font-ui); font-size: 13px; line-height: 1.6; border-top: 1px solid #ddd; max-height: 200px; overflow-y: auto;">
+    <h1 style="font-size: 18px; margin-bottom: 10px; color: #333;">Free Online Compiler for C, Python, Java, and 30+ Languages</h1>
+    <p style="margin-bottom: 15px;">
+      Welcome to Kidan Compiler, a fast and lightweight online IDE designed for students, developers, and programming enthusiasts. 
+      Whether you need an <strong>online C compiler</strong> for your coursework, a quick <strong>online Python editor</strong> to test a script, 
+      or an <strong>online Java compiler</strong> for complex projects, Kidan has you covered. 
+      With an integrated intelligent execution engine, you can write, run, and debug your code seamlessly without installing any software.
+      Experience a fully-featured coding environment directly in your browser with support for syntax highlighting, error detection, and standard input (stdin).
+    </p>
+    <div class="seo-links" style="display: flex; gap: 15px; flex-wrap: wrap;">
+      <a href="/online-c-compiler" style="color: #337ab7; text-decoration: none;">Online C Compiler</a>
+      <a href="/online-python-compiler" style="color: #337ab7; text-decoration: none;">Online Python Compiler</a>
+      <a href="/online-java-compiler" style="color: #337ab7; text-decoration: none;">Online Java Compiler</a>
+      <a href="/online-cpp-compiler" style="color: #337ab7; text-decoration: none;">Online C++ Compiler</a>
+      <a href="/online-javascript-compiler" style="color: #337ab7; text-decoration: none;">Online JavaScript Compiler</a>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>
