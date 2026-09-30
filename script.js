@@ -693,17 +693,12 @@ const DebugPanel = {
    § GROQ API
 ════════════════════════════════════════════════════════════════ */
 async function callGroq(messages, abortSignal) {
-  if (!STATE.apiKey) throw new Error('NO_API_KEY');
-
-  const resp = await fetch(CONFIG.GROQ_API_URL, {
+  const resp = await fetch('/.netlify/functions/run', {
     method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${STATE.apiKey}`,
-      'Content-Type':  'application/json',
-    },
+    headers: { 'Content-Type': 'application/json' },
     signal: abortSignal,
     body: JSON.stringify({
-      model:       STATE.model,
+      model:       STATE.model || CONFIG.DEFAULT_MODEL,
       messages,
       temperature: 0.1,
       max_tokens:  1500,
@@ -734,10 +729,9 @@ function parseGroqJSON(raw) {
 
 function getErrorMessage(err) {
   const msg = err.message || '';
-  if (msg === 'NO_API_KEY')   return ['No API Key', 'Add your Groq API key in Settings before running code.'];
-  if (msg === 'AUTH_FAILED')  return ['Authentication Failed', 'Groq authentication failed. Check your API key.'];
-  if (msg === 'RATE_LIMIT')   return ['Rate Limit Reached', 'Groq rate limit reached. Try again later.'];
-  if (msg === 'MALFORMED_JSON') return ['Invalid AI Response', 'The AI returned an invalid result.'];
+  if (msg === 'AUTH_FAILED')  return ['Authentication Failed', 'Groq API key may be invalid. Check Netlify environment variables.'];
+  if (msg === 'RATE_LIMIT')   return ['Rate Limit Reached', 'Groq rate limit reached. Try again in a moment.'];
+  if (msg === 'MALFORMED_JSON') return ['Invalid AI Response', 'The AI returned an invalid result. Try again.'];
   if (err.name === 'AbortError') return ['Stopped', 'Process terminated by user.'];
   if (msg.startsWith('API_ERROR:')) {
     const parts = msg.split(':');
