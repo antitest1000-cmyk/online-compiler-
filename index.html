@@ -173,9 +173,32 @@
   <!-- ═══════════════════════════════════════════════════════
        MAIN WORKSPACE
   ═══════════════════════════════════════════════════════ -->
-  <main class="workspace" id="workspace">
+  <div class="app-layout">
+    
+    <!-- ── SEO SIDEBAR ── -->
+    <aside class="sidebar-left">
+      <h1 class="sidebar-title">Free Online Compiler for C, Python, Java, and 30+ Languages</h1>
+      <p>
+        Welcome to Kidan Compiler, a fast and lightweight online IDE designed for students, developers, and programming enthusiasts. 
+        Whether you need an <strong>online C compiler</strong> for your coursework, a quick <strong>online Python editor</strong> to test a script, 
+        or an <strong>online Java compiler</strong> for complex projects, Kidan has you covered. 
+      </p>
+      <p>
+        With an integrated intelligent execution engine, you can write, run, and debug your code seamlessly without installing any software.
+        Experience a fully-featured coding environment directly in your browser with support for syntax highlighting, error detection, and standard input (stdin).
+      </p>
+      <div class="seo-links">
+        <a href="/online-c-compiler">Online C Compiler</a>
+        <a href="/online-python-compiler">Online Python Compiler</a>
+        <a href="/online-java-compiler">Online Java Compiler</a>
+        <a href="/online-cpp-compiler">Online C++ Compiler</a>
+        <a href="/online-javascript-compiler">Online JavaScript Compiler</a>
+      </div>
+    </aside>
 
-    <!-- ── CODE EDITOR PANEL ── -->
+    <main class="workspace" id="workspace">
+
+      <!-- ── CODE EDITOR PANEL ── -->
     <section class="editor-panel" id="editor-panel">
       <div class="editor-header">
         <div class="file-tabs">
@@ -341,6 +364,7 @@
 
     </section>
   </main>
+  </div>
 
   <!-- ═══════════════════════════════════════════════════════
        NEW FILE DIALOG
@@ -452,27 +476,6 @@
        TOAST NOTIFICATION
   ═══════════════════════════════════════════════════════ -->
   <div class="toast-container" id="toast-container"></div>
-
-  <!-- ═══════════════════════════════════════════════════════
-       SEO FOOTER
-  ═══════════════════════════════════════════════════════ -->
-  <footer class="seo-footer" style="padding: 20px 15px; background: #fff; color: #555; text-align: left; font-family: var(--font-ui); font-size: 13px; line-height: 1.6; border-top: 1px solid #ddd; max-height: 200px; overflow-y: auto;">
-    <h1 style="font-size: 18px; margin-bottom: 10px; color: #333;">Free Online Compiler for C, Python, Java, and 30+ Languages</h1>
-    <p style="margin-bottom: 15px;">
-      Welcome to Kidan Compiler, a fast and lightweight online IDE designed for students, developers, and programming enthusiasts. 
-      Whether you need an <strong>online C compiler</strong> for your coursework, a quick <strong>online Python editor</strong> to test a script, 
-      or an <strong>online Java compiler</strong> for complex projects, Kidan has you covered. 
-      With an integrated intelligent execution engine, you can write, run, and debug your code seamlessly without installing any software.
-      Experience a fully-featured coding environment directly in your browser with support for syntax highlighting, error detection, and standard input (stdin).
-    </p>
-    <div class="seo-links" style="display: flex; gap: 15px; flex-wrap: wrap;">
-      <a href="/online-c-compiler" style="color: #337ab7; text-decoration: none;">Online C Compiler</a>
-      <a href="/online-python-compiler" style="color: #337ab7; text-decoration: none;">Online Python Compiler</a>
-      <a href="/online-java-compiler" style="color: #337ab7; text-decoration: none;">Online Java Compiler</a>
-      <a href="/online-cpp-compiler" style="color: #337ab7; text-decoration: none;">Online C++ Compiler</a>
-      <a href="/online-javascript-compiler" style="color: #337ab7; text-decoration: none;">Online JavaScript Compiler</a>
-    </div>
-  </footer>
 
   <script src="script.js"></script>
 </body>
