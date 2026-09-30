@@ -121,6 +121,7 @@ Do not wrap in markdown. Do not add \`\`\`. Be thorough but concise.`;
 const STATE = {
   apiKey:       '',
   model:        CONFIG.DEFAULT_MODEL,
+  theme:        CONFIG.DEFAULT_THEME,
   lang:         'c',
   isRunning:    false,
   isDebugging:  false,
@@ -972,6 +973,17 @@ const Settings = {
   },
 };
 
+function applyTheme(theme) {
+  STATE.theme = theme;
+  Storage.set(CONFIG.STORAGE_KEYS.THEME, theme);
+  document.body.className = `theme-${theme}`;
+  const isDark = theme === 'dark';
+  const iconDark = DOM['theme-icon-dark'] || document.getElementById('theme-icon-dark');
+  const iconLight = DOM['theme-icon-light'] || document.getElementById('theme-icon-light');
+  if (iconDark) iconDark.style.display = isDark ? 'block' : 'none';
+  if (iconLight) iconLight.style.display = isDark ? 'none' : 'block';
+}
+
 /* ════════════════════════════════════════════════════════════════
    § SAVE & DOWNLOAD
 ════════════════════════════════════════════════════════════════ */
@@ -1222,7 +1234,7 @@ function attachEventListeners() {
     }
   });
   DOM['btn-theme'].addEventListener('click', () => {
-    // Theme toggle not supported — kept for toolbar button compatibility
+    applyTheme(STATE.theme === 'dark' ? 'light' : 'dark');
   });
   DOM['btn-settings'].addEventListener('click', Settings.open.bind(Settings));
   
@@ -1297,6 +1309,7 @@ async function init() {
   loadSavedPrefs();
   const { code, stdin } = Storage.loadAll();
   await loadEnvFile();
+  applyTheme(STATE.theme);
   
   DOM['lang-select'].value = STATE.lang;
   if (DOM['file-tab-name']) DOM['file-tab-name'].nodeValue = ` main${LANGUAGES[STATE.lang].ext}`;
