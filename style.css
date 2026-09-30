@@ -658,16 +658,16 @@ body {
   color: transparent;
 }
 
-/* ── SYNTAX — Visual Studio Light / Sublime Text Classic ── */
-.hl-keyword   { color: #0000ff; font-weight: bold; }
-.hl-type      { color: #2b91af; }
-.hl-preproc   { color: #808080; }
-.hl-string    { color: #a31515; }
-.hl-comment   { color: #008000; font-style: italic; }
-.hl-number    { color: #09885a; }
-.hl-function  { color: #795e26; }
-.hl-operator  { color: #000000; }
-.hl-normal    { color: #000000; }
+/* ── SYNTAX — uses CSS vars so dark/light themes work ── */
+.hl-keyword   { color: var(--syn-keyword);  font-weight: bold; }
+.hl-type      { color: var(--syn-type); }
+.hl-preproc   { color: var(--syn-preproc); }
+.hl-string    { color: var(--syn-string); }
+.hl-comment   { color: var(--syn-comment);  font-style: italic; }
+.hl-number    { color: var(--syn-number); }
+.hl-function  { color: var(--syn-function); }
+.hl-operator  { color: var(--syn-operator); }
+.hl-normal    { color: var(--syn-normal); }
 
 .line-highlight {
   position: absolute;
