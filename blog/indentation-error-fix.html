@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IndentationError: unexpected indent in Python | Kidan Compiler</title>
+  <meta name="description" content="Fix Python's IndentationError instantly. Understand the difference between tabs and spaces in Python."/>
+  <link rel="canonical" href="https://antitest1000-cmyk.github.io/online-compiler-/blog/indentation-error-fix.html"/>
+  <meta property="og:title" content="Fix IndentationError in Python"/>
+  <meta property="og:type" content="article"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../blog.css"/>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../index.html">Kidan <span>Compiler</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Editor</a></li>
+      <li><a href="index.html" class="active">Blog</a></li>
+      <li><a href="../online-python-compiler.html">Python</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <main class="main-content">
+    <div class="post-header">
+      <span class="post-tag">Error Fix</span>
+      <h1>IndentationError: unexpected indent</h1>
+      <div class="post-meta">4 min read &middot; Python</div>
+    </div>
+    <div class="post-body">
+      <p>Python relies on leading whitespace (spaces and tabs) to define code blocks. If you add spaces where they don't belong, or mix tabs and spaces, Python throws an <code>IndentationError</code>.</p>
+      
+      <h2>The Fix</h2>
+      <p>Ensure that all lines in the same block have the exact same number of leading spaces. Do not mix tabs and spaces.</p>
+<pre><code># WRONG
+def say_hello():
+    print("Hello")
+     print("World") # Notice the extra space here!
+
+# RIGHT
+def say_hello():
+    print("Hello")
+    print("World")</code></pre>
+
+      <p><i>More details coming soon...</i></p>
+    </div>
+  </main>
+</div>
+</body>
+</html>
