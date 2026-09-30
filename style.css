@@ -72,8 +72,46 @@
   --shadow-md:      0 2px 8px rgba(0,0,0,0.2);
 }
 
-body.theme-light {
+/* ── DARK THEME (default vars already cover this — explicit class for JS) ── */
+body.theme-dark {
   --bg-base:        #e8e8e8;
+  --bg-toolbar:     #2c2c2c;
+  --bg-toolbar-alt: #383838;
+  --bg-editor:      #ffffff;
+  --bg-panel:       #f9f9f9;
+  --bg-terminal:    #1e1e1e;
+  --bg-hover:       #444444;
+  --bg-modal:       #ffffff;
+  --bg-sidebar:     #3a3a3a;
+  --border:         #cccccc;
+  --text-primary:   #333333;
+  --text-secondary: #555555;
+  --text-muted:     #888888;
+  --text-toolbar:   #cccccc;
+  --text-toolbar-hover: #ffffff;
+  --text-terminal:  #d4d4d4;
+}
+
+/* ── LIGHT THEME — full bright override ── */
+body.theme-light {
+  --bg-base:        #f0f0f0;
+  --bg-toolbar:     #1a1a2e;
+  --bg-toolbar-alt: #16213e;
+  --bg-editor:      #fafafa;
+  --bg-panel:       #ffffff;
+  --bg-terminal:    #0f0f23;
+  --bg-hover:       #2c2c54;
+  --bg-modal:       #ffffff;
+  --bg-sidebar:     #ffffff;
+  --border:         #d0d0d0;
+  --border-dark:    #b0b0b0;
+  --text-primary:   #1a1a1a;
+  --text-secondary: #444444;
+  --text-muted:     #777777;
+  --text-toolbar:   #e0e0e0;
+  --text-toolbar-hover: #ffffff;
+  --text-terminal:  #c8ffc8;
+  --accent-primary: #0066cc;
 }
 
 /* ── RESET & BASE ── */
