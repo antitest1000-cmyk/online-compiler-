@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://antitest1000-cmyk.github.io/online-compiler-/sitemap.xml
+Sitemap: https://wtcode.netlify.app/sitemap.xml
