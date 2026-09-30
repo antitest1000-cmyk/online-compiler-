@@ -129,6 +129,7 @@ const STATE = {
   currentLine:  1,
   currentCol:   1,
   activeTab:    'input',
+  fontSize:     13,
 };
 
 /* ════════════════════════════════════════════════════════════════
@@ -155,8 +156,9 @@ function cacheDOM() {
     'modal-settings', 'modal-settings-close', 'modal-settings-save',
     'settings-apikey', 'settings-model',
     'btn-save-apikey', 'btn-clear-apikey', 'btn-toggle-apikey',
+    'btn-save-apikey', 'btn-clear-apikey', 'btn-toggle-apikey',
     'apikey-status', 'theme-dark', 'theme-light',
-    'toast-container', 'workspace',
+    'toast-container', 'workspace', 'resize-handle-v', 'sidebar-left',
   ];
   ids.forEach(id => {
     const key = id.replace(/-([a-z])/g, (_, c) => c.toUpperCase())
@@ -1003,6 +1005,41 @@ function initResizeHandle() {
   });
 }
 
+function initResizeHandleV() {
+  const handle  = DOM['resize-handle-v'];
+  const sidebar = DOM['sidebar-left'];
+  if (!handle || !sidebar) return;
+  const layout = document.querySelector('.app-layout');
+  let dragging = false;
+  let startX   = 0;
+  let startW   = 0;
+
+  handle.addEventListener('mousedown', e => {
+    dragging = true;
+    startX   = e.clientX;
+    startW   = sidebar.offsetWidth;
+    handle.classList.add('dragging');
+    document.body.style.cursor = 'ew-resize';
+    document.body.style.userSelect = 'none';
+  });
+
+  document.addEventListener('mousemove', e => {
+    if (!dragging) return;
+    const dx = e.clientX - startX;
+    const totalW = layout.offsetWidth;
+    const newW = Math.min(Math.max(startW + dx, 150), totalW * 0.5);
+    sidebar.style.width = `${newW}px`;
+  });
+
+  document.addEventListener('mouseup', () => {
+    if (!dragging) return;
+    dragging = false;
+    handle.classList.remove('dragging');
+    document.body.style.cursor     = '';
+    document.body.style.userSelect = '';
+  });
+}
+
 /* ════════════════════════════════════════════════════════════════
    § NEW FILE & LANGUAGE SELECTOR
 ════════════════════════════════════════════════════════════════ */
@@ -1086,6 +1123,31 @@ function handleLangChange(e) {
 }
 
 /* ════════════════════════════════════════════════════════════════
+   § ZOOM
+════════════════════════════════════════════════════════════════ */
+const ZOOM_MIN = 8;
+const ZOOM_MAX = 28;
+const ZOOM_STEP = 1;
+
+function applyZoom(size) {
+  STATE.fontSize = Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, size));
+  const px = `${STATE.fontSize}px`;
+  const lh = `${Math.round(STATE.fontSize * 1.6)}px`;
+  
+  document.documentElement.style.setProperty('--font-size', px);
+  document.documentElement.style.setProperty('--line-h', lh);
+  
+  const lvl = document.getElementById('zoom-level');
+  if (lvl) lvl.textContent = `${Math.round((STATE.fontSize / 13) * 100)}%`;
+  
+  Editor.update();
+}
+
+function zoomIn()  { applyZoom(STATE.fontSize + ZOOM_STEP); }
+function zoomOut() { applyZoom(STATE.fontSize - ZOOM_STEP); }
+function zoomReset() { applyZoom(13); }
+
+/* ════════════════════════════════════════════════════════════════
    § ENV LOADING (Local Dev)
 ════════════════════════════════════════════════════════════════ */
 async function loadEnvFile() {
@@ -1128,6 +1190,9 @@ function attachEventListeners() {
   DOM['btn-settings'].addEventListener('click', Settings.open.bind(Settings));
   
   DOM['lang-select'].addEventListener('change', handleLangChange);
+
+  document.getElementById('btn-zoom-in').addEventListener('click', zoomIn);
+  document.getElementById('btn-zoom-out').addEventListener('click', zoomOut);
 
   DOM['modal-new-cancel'].addEventListener('click',  () => DOM['modal-new'].classList.add('hidden'));
   DOM['modal-new-confirm'].addEventListener('click', confirmNew);
@@ -1186,6 +1251,10 @@ function attachEventListeners() {
       DOM['modal-new'].classList.add('hidden');
       Settings.close();
     }
+    const ctrl = e.ctrlKey || e.metaKey;
+    if (ctrl && (e.key === '=' || e.key === '+')) { e.preventDefault(); zoomIn(); }
+    if (ctrl && e.key === '-')                    { e.preventDefault(); zoomOut(); }
+    if (ctrl && e.key === '0')                    { e.preventDefault(); zoomReset(); }
   });
 }
 
@@ -1212,6 +1281,8 @@ async function init() {
 
   attachEventListeners();
   initResizeHandle();
+  initResizeHandleV();
+  applyZoom(STATE.fontSize);
   switchTab('terminal');
   DOM['code-textarea'].focus();
 
