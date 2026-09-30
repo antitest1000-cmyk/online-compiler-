@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>printf() in C — Syntax, Format Specifiers, and Examples | Kidan Compiler</title>
+  <meta name="description" content="Learn how to use the printf() function in C to output text, variables, and formatted numbers. Includes a complete list of format specifiers and runnable examples."/>
+  <link rel="canonical" href="https://antitest1000-cmyk.github.io/online-compiler-/blog/c-printf-function.html"/>
+  <meta property="og:title" content="printf() in C — Function Reference"/>
+  <meta property="og:description" content="Complete guide to using printf() in C with format specifiers and examples."/>
+  <meta property="og:type" content="article"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../blog.css"/>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../index.html">Kidan <span>Compiler</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Editor</a></li>
+      <li><a href="index.html" class="active">Blog</a></li>
+      <li><a href="../online-c-compiler.html">C</a></li>
+      <li><a href="../online-python-compiler.html">Python</a></li>
+      <li><a href="../online-java-compiler.html">Java</a></li>
+      <li><a href="../online-cpp-compiler.html">C++</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <main class="main-content">
+
+    <div class="breadcrumb">
+      <a href="../index.html">Home</a><span>&rsaquo;</span>
+      <a href="index.html">Blog</a><span>&rsaquo;</span>
+      <a href="#">C Functions</a><span>&rsaquo;</span>
+      printf()
+    </div>
+
+    <div class="post-header">
+      <span class="post-tag">C Function Reference</span>
+      <h1>printf() in C</h1>
+      <div class="post-meta">5 min read &middot; Standard Library: &lt;stdio.h&gt;</div>
+    </div>
+
+    <div class="post-body">
+      <p>
+        The <code>printf()</code> function is used to print formatted output to the standard output stream (usually the console/terminal). It is the most commonly used output function in C programming.
+      </p>
+
+      <h2>Syntax</h2>
+<pre><code>int printf(const char *format, ...);</code></pre>
+
+      <p><strong>Parameters:</strong></p>
+      <ul>
+        <li><code>format</code>: A C string that contains the text to be written. It can optionally contain embedded <em>format specifiers</em> that are replaced by the values specified in subsequent arguments.</li>
+        <li><code>...</code>: Additional arguments matching the format specifiers.</li>
+      </ul>
+      
+      <p><strong>Return Value:</strong> Returns the total number of characters printed successfully. If an error occurs, it returns a negative number.</p>
+
+      <h2>Basic Example</h2>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int age = 21;
+    float gpa = 3.8;
+    char grade = 'A';
+    
+    printf("Age: %d\n", age);
+    printf("GPA: %.2f\n", gpa);
+    printf("Grade: %c\n", grade);
+    
+    return 0;
+}</code></pre>
+
+      <a href="../index.html" class="try-btn" onclick="localStorage.setItem('kidan_lang', 'c');">▶ Run this code in Kidan Compiler</a>
+
+      <h2>Common Format Specifiers</h2>
+      <table style="width:100%; text-align:left; border-collapse:collapse; margin-bottom: 20px;">
+        <tr style="border-bottom: 2px solid #ddd;">
+          <th style="padding: 8px;">Specifier</th>
+          <th style="padding: 8px;">Data Type</th>
+          <th style="padding: 8px;">Description</th>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px;"><code>%d</code> or <code>%i</code></td>
+          <td style="padding: 8px;">int</td>
+          <td style="padding: 8px;">Signed decimal integer</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px;"><code>%f</code></td>
+          <td style="padding: 8px;">float / double</td>
+          <td style="padding: 8px;">Decimal floating point</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px;"><code>%c</code></td>
+          <td style="padding: 8px;">char</td>
+          <td style="padding: 8px;">Single character</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px;"><code>%s</code></td>
+          <td style="padding: 8px;">char array / pointer</td>
+          <td style="padding: 8px;">String of characters</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px;"><code>%p</code></td>
+          <td style="padding: 8px;">pointer</td>
+          <td style="padding: 8px;">Memory address</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px;"><code>%x</code></td>
+          <td style="padding: 8px;">unsigned int</td>
+          <td style="padding: 8px;">Hexadecimal integer (lowercase)</td>
+        </tr>
+      </table>
+
+      <h2>Formatting Numbers (Width and Precision)</h2>
+      <p>You can control exactly how numbers are printed using width and precision modifiers:</p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    float pi = 3.14159265;
+    
+    // Default printing
+    printf("Default: %f\n", pi);
+    
+    // Print with exactly 2 decimal places
+    printf("Two decimals: %.2f\n", pi);
+    
+    // Right-align within 10 characters
+    printf("Right aligned: %10.2f\n", pi);
+    
+    // Pad with leading zeros
+    printf("Zero padded: %010.2f\n", pi);
+    
+    return 0;
+}</code></pre>
+
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>Why do I need to include <code>&lt;stdio.h&gt;</code>?</h3>
+        <p>The <code>printf()</code> function is part of the Standard Input/Output library. If you don't include this header, the compiler won't know how to execute the function, leading to an "implicit declaration" warning or error.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How do I print a percent sign (%)?</h3>
+        <p>Because <code>%</code> is a special character used for format specifiers, you must escape it by typing it twice: <code>printf("Score: 100%%\n");</code></p>
+      </div>
+    </div>
+
+  </main>
+
+  <aside class="blog-sidebar">
+    <div class="widget">
+      <div class="widget-title">Related C Functions</div>
+      <div class="widget-body">
+        <ul>
+          <li><a href="#">scanf()</a></li>
+          <li><a href="#">strlen()</a></li>
+          <li><a href="#">malloc()</a></li>
+          <li><a href="#">fopen()</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="widget">
+      <div class="widget-title">Language Compilers</div>
+      <div class="widget-body">
+        <ul>
+          <li><a href="../online-c-compiler.html">Online C Compiler</a></li>
+          <li><a href="../online-python-compiler.html">Online Python Compiler</a></li>
+          <li><a href="../online-java-compiler.html">Online Java Compiler</a></li>
+          <li><a href="../online-cpp-compiler.html">Online C++ Compiler</a></li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>Kidan Compiler</h4>
+      <ul>
+        <li><a href="../index.html">Editor</a></li>
+        <li><a href="index.html">Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Languages</h4>
+      <ul>
+        <li><a href="../online-c-compiler.html">C Compiler</a></li>
+        <li><a href="../online-python-compiler.html">Python Compiler</a></li>
+        <li><a href="../online-java-compiler.html">Java Compiler</a></li>
+        <li><a href="../online-cpp-compiler.html">C++ Compiler</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 Kidan Compiler. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
