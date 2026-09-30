@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Free Online C Compiler & IDE — Write and Run C Code in Browser</title>
+  <meta name="description" content="Use our fast, free Online C Compiler to write, run, and debug C code directly in your browser. No installation or setup required."/>
+  <link rel="canonical" href="https://antitest1000-cmyk.github.io/online-compiler-/online-c-compiler.html"/>
+  <meta property="og:title" content="Online C Compiler & IDE"/>
+  <meta property="og:description" content="Write and run C code instantly in your browser."/>
+  <meta property="og:type" content="website"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="blog.css"/>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">Kidan <span>Compiler</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Editor</a></li>
+      <li><a href="blog/index.html">Blog</a></li>
+      <li><a href="online-c-compiler.html" class="active">C</a></li>
+      <li><a href="online-python-compiler.html">Python</a></li>
+      <li><a href="online-java-compiler.html">Java</a></li>
+      <li><a href="online-cpp-compiler.html">C++</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>Free Online C Compiler</h1>
+  <p>Write, compile, and run C programs instantly in your browser using our fast, intelligent execution engine. No GCC installation required.</p>
+  <a href="index.html" class="btn-hero">▶ Open C Editor</a>
+</div>
+
+<div class="page-wrap">
+  <main class="main-content">
+    <div class="post-body">
+      <h2>Why use the Kidan Online C Compiler?</h2>
+      <p>
+        Setting up a C environment locally involves downloading tools like MinGW or configuring Xcode, which can be frustrating for beginners. Our online C compiler gives you a fully-featured IDE running entirely in the cloud. It features syntax highlighting, error detection, standard input handling, and instant execution.
+      </p>
+
+      <h2>Basic Example: Hello World</h2>
+      <p>The standard "Hello World" program in C demonstrates the structure of a C file, including header files and the main function.</p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}</code></pre>
+
+      <h2>Handling Standard Input (scanf)</h2>
+      <p>Our IDE fully supports standard input. You can read user input using functions like <code>scanf</code> or <code>fgets</code>. Simply enter your input in the "Standard Input" tab before running the program.</p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int age;
+    printf("Enter your age: ");
+    scanf("%d", &amp;age);
+    printf("You are %d years old.\n", age);
+    return 0;
+}</code></pre>
+
+      <h2>Using Arrays and Loops</h2>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int numbers[] = {10, 20, 30, 40, 50};
+    int sum = 0;
+    
+    for (int i = 0; i &lt; 5; i++) {
+        sum += numbers[i];
+    }
+    
+    printf("Total sum: %d\n", sum);
+    return 0;
+}</code></pre>
+
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>Which C standard is supported?</h3>
+        <p>The compiler environment is compatible with modern C standards including C99 and C11, supporting most standard GCC/Clang syntax.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Are external libraries supported?</h3>
+        <p>Standard libraries (like <code>&lt;math.h&gt;</code>, <code>&lt;stdlib.h&gt;</code>, <code>&lt;string.h&gt;</code>) are fully supported. Third-party libraries that require manual linking (like OpenGL or custom Makefiles) are not supported in the web environment.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is my code saved?</h3>
+        <p>Yes, your code is automatically saved in your browser's local storage. When you return to the site, your code will be exactly as you left it.</p>
+      </div>
+    </div>
+  </main>
+
+  <aside class="blog-sidebar">
+    <div class="widget">
+      <div class="widget-title">Other Compilers</div>
+      <div class="widget-body">
+        <ul>
+          <li><a href="online-python-compiler.html">Python Compiler</a></li>
+          <li><a href="online-java-compiler.html">Java Compiler</a></li>
+          <li><a href="online-cpp-compiler.html">C++ Compiler</a></li>
+          <li><a href="online-javascript-compiler.html">JavaScript Compiler</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="widget">
+      <div class="widget-title">C Tutorials</div>
+      <div class="widget-body">
+        <ul>
+          <li><a href="blog/run-c-code-online.html">How to Run C Code Online</a></li>
+          <li><a href="blog/c-programs-for-exams.html">Top 20 C Exam Programs</a></li>
+          <li><a href="blog/segmentation-fault-fix.html">Fix Segmentation Faults</a></li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>Kidan Compiler</h4>
+      <ul>
+        <li><a href="index.html">Editor</a></li>
+        <li><a href="blog/index.html">Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Languages</h4>
+      <ul>
+        <li><a href="online-c-compiler.html">C Compiler</a></li>
+        <li><a href="online-python-compiler.html">Python Compiler</a></li>
+        <li><a href="online-java-compiler.html">Java Compiler</a></li>
+        <li><a href="online-cpp-compiler.html">C++ Compiler</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 Kidan Compiler. All rights reserved.</div>
+</footer>
+
+</body>
+</html>

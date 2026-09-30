@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Free Online Java Compiler & IDE — Run Java Code Online</title>
+  <meta name="description" content="A fast, free online Java Compiler. Write, compile, and run Java code directly in your browser. Supports standard input, Java 17+ syntax, and instant execution."/>
+  <link rel="canonical" href="https://antitest1000-cmyk.github.io/online-compiler-/online-java-compiler.html"/>
+  <meta property="og:title" content="Online Java Compiler & IDE"/>
+  <meta property="og:description" content="Write and run Java code instantly in your browser."/>
+  <meta property="og:type" content="website"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="blog.css"/>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">Kidan <span>Compiler</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Editor</a></li>
+      <li><a href="blog/index.html">Blog</a></li>
+      <li><a href="online-c-compiler.html">C</a></li>
+      <li><a href="online-python-compiler.html">Python</a></li>
+      <li><a href="online-java-compiler.html" class="active">Java</a></li>
+      <li><a href="online-cpp-compiler.html">C++</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>Free Online Java Compiler</h1>
+  <p>Compile and run Java code instantly without downloading the JDK or setting up Eclipse/IntelliJ. A fast and simple web IDE for Java developers.</p>
+  <a href="index.html" class="btn-hero" onclick="localStorage.setItem('kidan_lang', 'java');">▶ Open Java Editor</a>
+</div>
+
+<div class="page-wrap">
+  <main class="main-content">
+    <div class="post-body">
+      <h2>Why use an Online Java Compiler?</h2>
+      <p>
+        Java is heavily used in enterprise development and education. However, configuring the Java Development Kit (JDK), environment variables, and IDEs can be time-consuming. Kidan Compiler removes all these barriers, allowing you to focus purely on writing and understanding code.
+      </p>
+
+      <h2>Basic Example: Hello World</h2>
+      <p>In Java, all code must reside inside a class. Here is the standard way to print text to the console:</p>
+<pre><code>public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}</code></pre>
+
+      <h2>Reading Input with Scanner</h2>
+      <p>The <code>java.util.Scanner</code> class is the easiest way to read user input. Add your inputs to the <strong>Standard Input</strong> tab in the IDE before running.</p>
+<pre><code>import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter your name: ");
+        String name = scanner.nextLine();
+        
+        System.out.println("Welcome to Java, " + name + "!");
+        scanner.close();
+    }
+}</code></pre>
+
+      <h2>Object-Oriented Programming (OOP)</h2>
+      <p>Java is an object-oriented language. You can define classes, objects, and methods directly in the web editor:</p>
+<pre><code>class Rectangle {
+    int width;
+    int height;
+    
+    Rectangle(int w, int h) {
+        width = w;
+        height = h;
+    }
+    
+    int getArea() {
+        return width * height;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Rectangle rect = new Rectangle(5, 10);
+        System.out.println("Area: " + rect.getArea());
+    }
+}</code></pre>
+
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>What version of Java is supported?</h3>
+        <p>Our intelligent execution engine understands modern Java syntax (Java 17+), including records, switch expressions, and text blocks.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do I need to name my file Main.java?</h3>
+        <p>Yes, by default the IDE looks for a public class named <code>Main</code> when executing Java code.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I import Java libraries?</h3>
+        <p>All standard <code>java.*</code> and <code>javax.*</code> library packages are supported out-of-the-box.</p>
+      </div>
+    </div>
+  </main>
+
+  <aside class="blog-sidebar">
+    <div class="widget">
+      <div class="widget-title">Other Compilers</div>
+      <div class="widget-body">
+        <ul>
+          <li><a href="online-c-compiler.html">C Compiler</a></li>
+          <li><a href="online-python-compiler.html">Python Compiler</a></li>
+          <li><a href="online-cpp-compiler.html">C++ Compiler</a></li>
+          <li><a href="online-javascript-compiler.html">JavaScript Compiler</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="widget">
+      <div class="widget-title">Java Tutorials</div>
+      <div class="widget-body">
+        <ul>
+          <li><a href="blog/hello-world-10-languages.html">Hello World Guide</a></li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>Kidan Compiler</h4>
+      <ul>
+        <li><a href="index.html">Editor</a></li>
+        <li><a href="blog/index.html">Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Languages</h4>
+      <ul>
+        <li><a href="online-c-compiler.html">C Compiler</a></li>
+        <li><a href="online-python-compiler.html">Python Compiler</a></li>
+        <li><a href="online-java-compiler.html">Java Compiler</a></li>
+        <li><a href="online-cpp-compiler.html">C++ Compiler</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 Kidan Compiler. All rights reserved.</div>
+</footer>
+
+</body>
+</html>

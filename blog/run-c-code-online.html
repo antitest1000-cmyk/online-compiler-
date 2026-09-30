@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>How to Run C Code Online Without Installing Anything — Kidan Compiler</title>
+  <meta name="description" content="Learn how to write and run C programs entirely online, no installation needed. Step-by-step guide using Kidan Compiler."/>
+  <link rel="canonical" href="https://antitest1000-cmyk.github.io/online-compiler-/blog/run-c-code-online.html"/>
+  <meta property="og:title" content="How to Run C Code Online Without Installing Anything"/>
+  <meta property="og:description" content="Step-by-step guide to running C code in your browser with Kidan Compiler."/>
+  <meta property="og:type" content="article"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../blog.css"/>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../index.html">Kidan <span>Compiler</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Editor</a></li>
+      <li><a href="index.html" class="active">Blog</a></li>
+      <li><a href="../online-c-compiler.html">C</a></li>
+      <li><a href="../online-python-compiler.html">Python</a></li>
+      <li><a href="../online-java-compiler.html">Java</a></li>
+      <li><a href="../online-cpp-compiler.html">C++</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <main class="main-content">
+
+    <div class="breadcrumb">
+      <a href="../index.html">Home</a><span>&rsaquo;</span>
+      <a href="index.html">Blog</a><span>&rsaquo;</span>
+      Run C Code Online
+    </div>
+
+    <div class="post-header">
+      <span class="post-tag">Tutorial</span>
+      <h1>How to Run C Code Online Without Installing Anything</h1>
+      <div class="post-meta">5 min read &middot; C Programming &middot; Beginner</div>
+    </div>
+
+    <div class="post-body">
+      <p>
+        Installing a C compiler like GCC traditionally requires setting up a development environment — downloading MinGW on Windows, using Xcode tools on macOS, or configuring packages on Linux. This can take hours and go wrong in many ways. With an <strong>online C compiler</strong> like Kidan Compiler, you can write, compile, and run C code directly in your browser in seconds.
+      </p>
+
+      <h2>Step 1: Open Kidan Compiler</h2>
+      <p>
+        Navigate to <a href="../index.html">Kidan Compiler</a>. The editor loads instantly with a default C program already written for you. No account, no download, no setup.
+      </p>
+
+      <h2>Step 2: Write Your C Code</h2>
+      <p>
+        Click inside the editor and start typing, or replace the existing code. Here is a simple "Hello, World!" program:
+      </p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}</code></pre>
+
+      <h2>Step 3: Click Run</h2>
+      <p>
+        Press the green <strong>Run</strong> button in the toolbar or use the keyboard shortcut <code>Ctrl+Enter</code>. The Terminal tab will show your program's output within a second.
+      </p>
+
+      <a href="../index.html" class="try-btn">▶ Try It Now — Open Editor</a>
+
+      <h2>Example: Reading User Input</h2>
+      <p>You can also use <code>scanf</code> to read input. Enter the value in the <strong>Standard Input</strong> tab before running:</p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+    printf("You entered: %d\n", n);
+    return 0;
+}</code></pre>
+      <p>Switch to the <strong>Standard Input</strong> tab, type <code>42</code>, then press Run.</p>
+
+      <h2>Example: A Simple Loop</h2>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    for (int i = 1; i &lt;= 5; i++) {
+        printf("Line %d\n", i);
+    }
+    return 0;
+}</code></pre>
+
+      <h2>Why Use an Online C Compiler?</h2>
+      <ul>
+        <li><strong>No setup</strong> — works on any OS: Windows, macOS, Linux, Android, iOS</li>
+        <li><strong>Instant feedback</strong> — see output in under a second</li>
+        <li><strong>Share code</strong> — great for asking for help or showing solutions</li>
+        <li><strong>30+ languages</strong> — switch from C to Python, Java, or C++ in one click</li>
+      </ul>
+
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>Is Kidan Compiler free?</h3>
+        <p>Yes, completely free. No account required.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Does it support all C standard library functions?</h3>
+        <p>Yes — printf, scanf, malloc, file I/O, math.h, and most standard functions are supported.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I save my code?</h3>
+        <p>Your code is automatically saved in your browser's local storage and restored the next time you visit.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Does it work on mobile?</h3>
+        <p>Yes. The editor is responsive and works on phones and tablets.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <aside class="blog-sidebar">
+    <div class="widget">
+      <div class="widget-title">Related Posts</div>
+      <div class="widget-body">
+        <ul>
+          <li><a href="c-programs-for-exams.html">Top 20 C Programs for Exams</a></li>
+          <li><a href="hello-world-10-languages.html">Hello World in 10 Languages</a></li>
+          <li><a href="segmentation-fault-fix.html">Fix Segmentation Fault</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="widget">
+      <div class="widget-title">Language Compilers</div>
+      <div class="widget-body">
+        <ul>
+          <li><a href="../online-c-compiler.html">Online C Compiler</a></li>
+          <li><a href="../online-python-compiler.html">Online Python Compiler</a></li>
+          <li><a href="../online-java-compiler.html">Online Java Compiler</a></li>
+          <li><a href="../online-cpp-compiler.html">Online C++ Compiler</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="widget">
+      <div class="widget-body" style="text-align:center;">
+        <a href="../index.html" class="try-btn" style="display:block; text-align:center;">▶ Open Editor</a>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>Kidan Compiler</h4>
+      <ul>
+        <li><a href="../index.html">Editor</a></li>
+        <li><a href="index.html">Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Languages</h4>
+      <ul>
+        <li><a href="../online-c-compiler.html">C Compiler</a></li>
+        <li><a href="../online-python-compiler.html">Python Compiler</a></li>
+        <li><a href="../online-java-compiler.html">Java Compiler</a></li>
+        <li><a href="../online-cpp-compiler.html">C++ Compiler</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Tutorials</h4>
+      <ul>
+        <li><a href="run-c-code-online.html">Run C Online</a></li>
+        <li><a href="hello-world-10-languages.html">Hello World Guide</a></li>
+        <li><a href="c-programs-for-exams.html">C Exam Programs</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 Kidan Compiler. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
