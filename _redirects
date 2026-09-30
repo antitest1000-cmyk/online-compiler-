@@ -1,0 +1,19 @@
+# Clean URLs — serve .html files at extension-less paths
+/online-c-compiler              /online-c-compiler.html              200
+/online-python-compiler         /online-python-compiler.html         200
+/online-java-compiler           /online-java-compiler.html           200
+/online-cpp-compiler            /online-cpp-compiler.html            200
+/online-javascript-compiler     /online-javascript-compiler.html     200
+/blog                           /blog/index.html                     200
+/blog/run-c-code-online         /blog/run-c-code-online.html         200
+/blog/c-factorial-program       /blog/c-factorial-program.html       200
+/blog/c-printf-function         /blog/c-printf-function.html         200
+/blog/hello-world-10-languages  /blog/hello-world-10-languages.html  200
+/blog/c-programs-for-exams      /blog/c-programs-for-exams.html      200
+/blog/segmentation-fault-fix    /blog/segmentation-fault-fix.html    200
+/blog/indentation-error-fix     /blog/indentation-error-fix.html     200
+/blog/turbo-c-online            /blog/turbo-c-online.html            200
+/blog/turbo-c-for-windows-11    /blog/turbo-c-for-windows-11.html    200
+/blog/turbo-c-alternative       /blog/turbo-c-alternative.html       200
+/blog/conio-h-not-found-fix     /blog/conio-h-not-found-fix.html     200
+/blog/c-programming-lab-programs /blog/c-programming-lab-programs.html 200

@@ -1144,19 +1144,118 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover { background: #999999; }
 
-/* ── RESPONSIVE / MOBILE ── */
-@media (max-width: 768px) {
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE — TABLET (max 900px)
+══════════════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .sidebar-left {
+    width: 220px;
+    min-width: 120px;
+  }
+
+  .btn .btn-label { display: none; }
+  .btn-run  { padding: 4px 10px; }
+  .btn-debug { display: none; }
+  .btn-beautify { display: none; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE — MOBILE (max 640px)
+══════════════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  /* Layout: stack sidebar below toolbar, editor takes full width */
   .app-layout {
     flex-direction: column;
+    overflow-y: auto;
+    min-height: 0;
   }
+
+  /* Hide sidebar on mobile to give full screen to editor */
   .sidebar-left {
-    width: 100% !important;
-    max-width: 100%;
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-    max-height: 250px;
+    display: none !important;
   }
+
   .resize-handle-v {
     display: none !important;
+  }
+
+  /* Workspace fills full viewport height */
+  .workspace {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Toolbar: tighten up on mobile */
+  .toolbar {
+    height: auto;
+    min-height: 42px;
+    flex-wrap: wrap;
+    padding: 4px 6px;
+    gap: 4px;
+  }
+
+  .toolbar-left,
+  .toolbar-right {
+    flex-wrap: wrap;
+    gap: 3px;
+  }
+
+  .brand-text { display: none; }
+  .brand-icon { width: 24px; height: 24px; }
+  .toolbar-divider { display: none; }
+
+  /* Hide non-essential toolbar buttons */
+  .btn-save    { display: none; }
+  .btn-debug   { display: none; }
+  .btn-beautify{ display: none; }
+
+  /* Shrink remaining buttons */
+  .btn { font-size: 11px; padding: 3px 7px; }
+  .btn .btn-label { display: none; }
+
+  /* Language selector: tighten */
+  .lang-selector { padding: 2px 6px; font-size: 11px; }
+  .lang-selector span { display: none; }
+
+  /* Editor: give it 50% of the screen */
+  .editor-panel {
+    flex: 0 0 50vh;
+    min-height: 150px;
+  }
+
+  /* Resize handle between editor and terminal */
+  .resize-handle-h { display: none; }
+
+  /* Terminal: give it remaining space */
+  .output-panel {
+    flex: 1;
+    min-height: 120px;
+  }
+
+  /* Terminal tab bar: make it scrollable */
+  .output-tabs {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+
+  /* Font size in editor on mobile */
+  .editor-scroller {
+    font-size: 12px;
+  }
+
+  /* Status bar: hide on mobile */
+  .status-bar { display: none; }
+
+  /* Modal: full screen on mobile */
+  .modal {
+    align-items: flex-end;
+  }
+  .modal-dialog {
+    width: 100%;
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: 12px 12px 0 0;
   }
 }
