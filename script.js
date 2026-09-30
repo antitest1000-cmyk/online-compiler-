@@ -156,7 +156,6 @@ function cacheDOM() {
     'modal-settings', 'modal-settings-close', 'modal-settings-save',
     'settings-apikey', 'settings-model',
     'btn-save-apikey', 'btn-clear-apikey', 'btn-toggle-apikey',
-    'btn-save-apikey', 'btn-clear-apikey', 'btn-toggle-apikey',
     'apikey-status', 'theme-dark', 'theme-light',
     'toast-container', 'workspace', 'resize-handle-v', 'sidebar-left',
   ];

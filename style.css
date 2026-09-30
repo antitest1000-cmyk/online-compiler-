@@ -343,15 +343,19 @@ body {
 
 .sidebar-left {
   width: 260px;
+  min-width: 150px;
+  max-width: 50vw;
   background: var(--bg-panel);
   border-right: 1px solid var(--border);
   padding: 16px;
   overflow-y: auto;
+  overflow-x: hidden;
   font-family: var(--font-ui);
   display: flex;
   flex-direction: column;
   gap: 12px;
   flex-shrink: 0;
+  word-break: break-word;
 }
 
 .sidebar-title {
