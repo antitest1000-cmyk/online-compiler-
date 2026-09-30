@@ -1144,3 +1144,20 @@ body {
   border: 2px solid #f0f0f0;
 }
 ::-webkit-scrollbar-thumb:hover { background: #999999; }
+
+/* ── RESPONSIVE / MOBILE ── */
+@media (max-width: 768px) {
+  .app-layout {
+    flex-direction: column;
+  }
+  .sidebar-left {
+    width: 100% !important;
+    max-width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    max-height: 250px;
+  }
+  .resize-handle-v {
+    display: none !important;
+  }
+}

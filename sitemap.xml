@@ -25,6 +25,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://antitest1000-cmyk.github.io/online-compiler-/online-cpp-compiler.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://antitest1000-cmyk.github.io/online-compiler-/online-javascript-compiler.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://antitest1000-cmyk.github.io/online-compiler-/blog/index.html</loc>
     <lastmod>2026-09-30</lastmod>
     <changefreq>weekly</changefreq>
