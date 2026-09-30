@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   KIDAN COMPILER — script.js
+   WTCODE COMPILER — script.js
    Frontend-only AI-powered Multi-Language IDE
 ═══════════════════════════════════════════════════════════════ */
 
@@ -16,7 +16,7 @@ const LANGUAGES = {
   python:     { name: "Python",     ext: ".py",    type: "interpreted", cmdRun: "python main.py", starter: `print("Hello World")` },
   javascript: { name: "JavaScript", ext: ".js",    type: "browser",     cmdRun: "node main.js", starter: `console.log("Hello World");` },
   typescript: { name: "TypeScript", ext: ".ts",    type: "runtime",     cmdRun: "ts-node main.ts", starter: `const message: string = "Hello World";\nconsole.log(message);` },
-  html:       { name: "HTML",       ext: ".html",  type: "browser",     starter: `<!DOCTYPE html>\n<html>\n<head>\n    <title>Kidan</title>\n</head>\n<body>\n    <h1>Hello World</h1>\n</body>\n</html>` },
+  html:       { name: "HTML",       ext: ".html",  type: "browser",     starter: `<!DOCTYPE html>\n<html>\n<head>\n    <title>Wtcode</title>\n</head>\n<body>\n    <h1>Hello World</h1>\n</body>\n</html>` },
   css:        { name: "CSS",        ext: ".css",   type: "browser",     starter: `body {\n    font-family: Arial;\n}\n\nh1 {\n    color: blue;\n}` },
   php:        { name: "PHP",        ext: ".php",   type: "interpreted", cmdRun: "php main.php", starter: `<?php\necho "Hello World";\n?>` },
   sql:        { name: "SQL",        ext: ".sql",   type: "query",       cmdRun: "Execute SQL", starter: `SELECT 'Hello World' AS message;` },
@@ -50,12 +50,12 @@ const CONFIG = {
   DEFAULT_THEME: 'dark',
 
   STORAGE_KEYS: {
-    CODE:    'kidan_code_lang_', // appended with language
-    STDIN:   'kidan_stdin',
-    API_KEY: 'kidan_api_key',
-    MODEL:   'kidan_model',
-    THEME:   'kidan_theme',
-    LANG:    'kidan_lang',
+    CODE:    'wtcode_code_lang_', // appended with language
+    STDIN:   'wtcode_stdin',
+    API_KEY: 'wtcode_api_key',
+    MODEL:   'wtcode_model',
+    THEME:   'wtcode_theme',
+    LANG:    'wtcode_lang',
   },
 
   getSystemPrompt(langKey) {
@@ -926,11 +926,11 @@ function applyEditorPrefs() {
 }
 
 function loadSavedPrefs() {
-  STATE.fontSize        = parseInt(localStorage.getItem('kidan_font_size')  || '13');
-  STATE.editorFont      = localStorage.getItem('kidan_font_family')         || "'JetBrains Mono', 'Consolas', monospace";
-  STATE.tabSize         = parseInt(localStorage.getItem('kidan_tab_size')   || '4');
-  STATE.lineHeightMult  = parseFloat(localStorage.getItem('kidan_line_height') || '1.6');
-  STATE.wordWrap        = localStorage.getItem('kidan_word_wrap') === 'true';
+  STATE.fontSize        = parseInt(localStorage.getItem('wtcode_font_size')  || '13');
+  STATE.editorFont      = localStorage.getItem('wtcode_font_family')         || "'JetBrains Mono', 'Consolas', monospace";
+  STATE.tabSize         = parseInt(localStorage.getItem('wtcode_tab_size')   || '4');
+  STATE.lineHeightMult  = parseFloat(localStorage.getItem('wtcode_line_height') || '1.6');
+  STATE.wordWrap        = localStorage.getItem('wtcode_word_wrap') === 'true';
 }
 
 const Settings = {
@@ -961,11 +961,11 @@ const Settings = {
     STATE.lineHeightMult = parseFloat(DOM['settings-line-height'].value);
     STATE.wordWrap       = DOM['settings-word-wrap'].checked;
 
-    localStorage.setItem('kidan_font_family',  STATE.editorFont);
-    localStorage.setItem('kidan_font_size',    STATE.fontSize);
-    localStorage.setItem('kidan_tab_size',     STATE.tabSize);
-    localStorage.setItem('kidan_line_height',  STATE.lineHeightMult);
-    localStorage.setItem('kidan_word_wrap',    STATE.wordWrap);
+    localStorage.setItem('wtcode_font_family',  STATE.editorFont);
+    localStorage.setItem('wtcode_font_size',    STATE.fontSize);
+    localStorage.setItem('wtcode_tab_size',     STATE.tabSize);
+    localStorage.setItem('wtcode_line_height',  STATE.lineHeightMult);
+    localStorage.setItem('wtcode_word_wrap',    STATE.wordWrap);
 
     applyEditorPrefs();
     Settings.close();
@@ -1128,7 +1128,7 @@ function confirmNew() {
   const langKey = getLanguageFromExtension(ext);
   
   if (!langKey) {
-    if (error) { error.textContent = `Extension ${ext} is not supported by Kidan Compiler.`; error.style.display = 'block'; }
+    if (error) { error.textContent = `Extension ${ext} is not supported by Wtcode Compiler.`; error.style.display = 'block'; }
     return;
   }
   
@@ -1207,7 +1207,7 @@ async function loadEnvFile() {
       const match = text.match(/GROQ_API_KEY\s*=\s*(.+)/);
       if (match && match[1]) {
         STATE.apiKey = match[1].trim();
-        console.log('[Kidan Compiler] Successfully loaded API key from /.env file');
+        console.log('[Wtcode Compiler] Successfully loaded API key from /.env file');
       }
     }
   } catch (err) {}
@@ -1329,9 +1329,9 @@ async function init() {
   switchTab('terminal');
   DOM['code-textarea'].focus();
 
-  Terminal.info('Kidan Compiler — Multi-Language IDE');
+  Terminal.info('Wtcode Compiler — Multi-Language IDE');
   Terminal.muted(`Currently selected language: ${LANGUAGES[STATE.lang].name}`);
-  console.log('[Kidan Compiler] Initialized.');
+  console.log('[Wtcode Compiler] Initialized.');
 }
 
 if (document.readyState === 'loading') {
