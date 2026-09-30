@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>C Program to Find Factorial of a Number (With Output) | Kidan Compiler</title>
+  <meta name="description" content="Learn how to write a C program to calculate the factorial of a number using loops and recursion. Includes code, explanation, and instant online execution."/>
+  <link rel="canonical" href="https://antitest1000-cmyk.github.io/online-compiler-/blog/c-factorial-program.html"/>
+  <meta property="og:title" content="Factorial Program in C"/>
+  <meta property="og:description" content="C Program to Find Factorial of a Number using for loop and recursion."/>
+  <meta property="og:type" content="article"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../blog.css"/>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="../index.html">Kidan <span>Compiler</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Editor</a></li>
+      <li><a href="index.html" class="active">Blog</a></li>
+      <li><a href="../online-c-compiler.html">C</a></li>
+      <li><a href="../online-python-compiler.html">Python</a></li>
+      <li><a href="../online-java-compiler.html">Java</a></li>
+      <li><a href="../online-cpp-compiler.html">C++</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <main class="main-content">
+
+    <div class="breadcrumb">
+      <a href="../index.html">Home</a><span>&rsaquo;</span>
+      <a href="index.html">Blog</a><span>&rsaquo;</span>
+      <a href="c-programs-for-exams.html">C Programs</a><span>&rsaquo;</span>
+      Factorial Program
+    </div>
+
+    <div class="post-header">
+      <span class="post-tag">C Program</span>
+      <h1>C Program to Find Factorial of a Number</h1>
+      <div class="post-meta">4 min read &middot; Exam Preparation &middot; C Programming</div>
+    </div>
+
+    <div class="post-body">
+      <p>
+        The factorial of a non-negative integer <code>n</code> is the product of all positive integers less than or equal to <code>n</code>. It is denoted by <code>n!</code>. 
+        For example, the factorial of 5 is <code>5! = 5 × 4 × 3 × 2 × 1 = 120</code>. The factorial of 0 is 1.
+      </p>
+      <p>
+        Finding the factorial of a number is one of the most frequently asked programs in university practical exams and coding interviews. Below are the two most common ways to solve this in C: using a <code>for</code> loop and using recursion.
+      </p>
+
+      <h2>Method 1: Factorial using a for loop</h2>
+      <p>This is the standard iterative approach. We use a loop that multiplies the numbers from 1 up to <code>n</code>.</p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int n, i;
+    unsigned long long fact = 1;
+    
+    printf("Enter an integer: ");
+    scanf("%d", &n);
+    
+    // Error condition for negative numbers
+    if (n < 0) {
+        printf("Error: Factorial of a negative number doesn't exist.\n");
+    } else {
+        for (i = 1; i <= n; ++i) {
+            fact *= i;
+        }
+        printf("Factorial of %d = %llu\n", n, fact);
+    }
+    
+    return 0;
+}</code></pre>
+
+      <h3>Sample Output:</h3>
+      <pre style="background: #222; border-left-color: #777;"><code>Enter an integer: 5
+Factorial of 5 = 120</code></pre>
+
+      <a href="../index.html" class="try-btn" onclick="localStorage.setItem('kidan_lang', 'c');">▶ Run this code in Kidan Compiler</a>
+
+      <h2>Method 2: Factorial using Recursion</h2>
+      <p>A recursive function is a function that calls itself. We can define factorial recursively as: <code>n! = n × (n-1)!</code>.</p>
+<pre><code>#include &lt;stdio.h&gt;
+
+unsigned long long multiplyNumbers(int n);
+
+int main() {
+    int n;
+    printf("Enter a positive integer: ");
+    scanf("%d", &n);
+    
+    if (n >= 0)
+        printf("Factorial of %d = %llu\n", n, multiplyNumbers(n));
+    else
+        printf("Factorial of negative number doesn't exist.\n");
+        
+    return 0;
+}
+
+unsigned long long multiplyNumbers(int n) {
+    if (n >= 1)
+        return n * multiplyNumbers(n - 1);
+    else
+        return 1;
+}</code></pre>
+
+      <h2>Important Note: Data Types</h2>
+      <p>
+        Notice that we used <code>unsigned long long</code> instead of <code>int</code> for the <code>fact</code> variable. Factorials grow exponentially fast. The factorial of 13 is already too large to fit in a standard 32-bit signed integer. Using an unsigned 64-bit integer allows us to calculate factorials up to 20!.
+      </p>
+
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>What is the factorial of 0?</h3>
+        <p>By mathematical convention, <code>0! = 1</code>. Both programs above will correctly output 1 if you input 0.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Why does the output become 0 or negative for large numbers?</h3>
+        <p>This is called integer overflow. If you enter a number like 100, the result exceeds the maximum limit of the <code>unsigned long long</code> data type, leading to garbage values. To handle huge factorials, you need to use arrays to store the digits manually.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <aside class="blog-sidebar">
+    <div class="widget">
+      <div class="widget-title">Related C Programs</div>
+      <div class="widget-body">
+        <ul>
+          <li><a href="c-factorial-program.html">Factorial of a Number</a></li>
+          <li><a href="hello-world-10-languages.html">Fibonacci Series</a></li>
+          <li><a href="hello-world-10-languages.html">Check Prime Number</a></li>
+          <li><a href="hello-world-10-languages.html">Palindrome Program</a></li>
+          <li><a href="hello-world-10-languages.html">Armstrong Number</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="widget">
+      <div class="widget-title">Language Compilers</div>
+      <div class="widget-body">
+        <ul>
+          <li><a href="../online-c-compiler.html">Online C Compiler</a></li>
+          <li><a href="../online-python-compiler.html">Online Python Compiler</a></li>
+          <li><a href="../online-java-compiler.html">Online Java Compiler</a></li>
+          <li><a href="../online-cpp-compiler.html">Online C++ Compiler</a></li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>Kidan Compiler</h4>
+      <ul>
+        <li><a href="../index.html">Editor</a></li>
+        <li><a href="index.html">Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Languages</h4>
+      <ul>
+        <li><a href="../online-c-compiler.html">C Compiler</a></li>
+        <li><a href="../online-python-compiler.html">Python Compiler</a></li>
+        <li><a href="../online-java-compiler.html">Java Compiler</a></li>
+        <li><a href="../online-cpp-compiler.html">C++ Compiler</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 Kidan Compiler. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
